@@ -1,0 +1,14 @@
+name: Kanbot CI
+on:
+  push:
+    branches:
+      - kanbot/**
+  pull_request:
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    container: python:3.12-bookworm
+    steps:
+      - uses: actions/checkout@v4
+      - name: build
+        run: python -m compileall -q .
